@@ -11,10 +11,10 @@
 
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>vertx-auth-oauth2-scala_2.12</artifactId>
+  <artifactId>vertx-health-check_2.12</artifactId>
 
   <properties>
-    <vertx-module>vertx-auth-oauth2</vertx-module>
+    <vertx-module>vertx-web</vertx-module>
   </properties>
 
   <dependencies>
@@ -23,26 +23,18 @@
       <groupId>io.vertx</groupId>
       <artifactId>${vertx-module}</artifactId>
       <version>${stack.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>io.vertx</groupId>
-      <artifactId>vertx-auth-common-scala_2.12</artifactId>
-      <version>${stack.version}</version>
+      <scope>provided</scope>
+      <classifier>sources</classifier>
     </dependency>
     <dependency>
       <groupId>io.vertx</groupId>
       <artifactId>${vertx-module}</artifactId>
       <version>${stack.version}</version>
-      <scope>provided</scope>
-      <classifier>sources</classifier>
     </dependency>
   </dependencies>
 
   <build>
     <plugins>
-      <plugin>
-        <artifactId>maven-assembly-plugin</artifactId>
-      </plugin>
       <plugin>
         <artifactId>maven-dependency-plugin</artifactId>
       </plugin>
@@ -84,6 +76,9 @@
         </executions>
       </plugin>
       <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+      </plugin>
+      <plugin>
         <artifactId>maven-jar-plugin</artifactId>
         <configuration>
           <archive>
@@ -101,7 +96,7 @@
         <configuration>
           <instructions>
             <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-            <Export-Package>io.vertx.scala.ext.auth.oauth2.*;version=${project.version}
+            <Export-Package>io.vertx.scala.ext.healthchecks;version=${project.version}
             </Export-Package>
             <Import-Package>*</Import-Package>
             <Include-Resource>{maven-resources}</Include-Resource>
